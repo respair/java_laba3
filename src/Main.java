@@ -31,7 +31,7 @@ public class Main {
                 .filter(l1 -> l1.getDept() == 3)
                 .collect(Collectors.toList());
 
-        System.out.println("*** зарплаты людям из 3 отдела ***");
+        System.out.println("*** зарплата людям из 3 отдела ***");
         for (Employee e : emp3){
             acc.paySalary(e);
         }
