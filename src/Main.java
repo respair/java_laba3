@@ -1,4 +1,7 @@
+import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.*;
 import java.util.List;
 
@@ -53,6 +56,53 @@ public class Main {
         for (Employee e : emp5){
             acc.payPremium(e);
         }
+
+        // HOMEWORK
+
+        System.out.println("CONSUMER: " + "\n");
+
+        Consumer<Employee> print_something = p -> System.out.println("name: " + p.getName());
+        print_something.accept(l.get(0));
+
+        System.out.println("\n");
+        System.out.println("all: ");
+        l.stream().forEach(print_something);
+
+        System.out.println("\n");
+        System.out.println("PREDICATE: " + "\n");
+
+        Predicate<Employee> predicate = p -> p.getAge()>30 && p.getCity() == "Domodedovo";
+        l.stream()
+                .filter(predicate)
+                .forEach(System.out::println);
+
+        System.out.println("\n");
+        System.out.println("SUPPLIER: " + "\n");
+
+        Supplier<Employee> s =
+                () -> new Employee.Builder()
+                        .setGivenName("Alex")
+                        .setSurName("Tihonov")
+                        .setAge(32)
+                        .setGender(Gender.MALE)
+                        .setRole(Role.EXECUTIVE)
+                        .setDept(3)
+                        .setCity("Kazan")
+                        .setCode(4)
+                        .build();
+
+        l.add(s.get());
+
+        l.stream()
+                .forEach(System.out::println);
+
+        System.out.println("\n");
+        System.out.println("BiPREDICATE: " + "\n");
+        int dept_n = 2;
+
+        System.out.println("1 работник в списке из 2 отдела?");
+        BiPredicate<Employee, Integer> bp = (t,i) -> t.getDept() == i;
+        System.out.println(bp.test(l.get(0), dept_n));
 
     }
 }
