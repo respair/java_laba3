@@ -13,13 +13,13 @@ public class Employee {
     private String address;
     private String city;
     private String state;  //область
-    private int code;      //код области
+    private int code = -1;      //код области
 
     private Employee() {}
 
     @Override
     public String toString(){
-        return "Employee{" + "givenName: " + givenName + "; surName: " + surName +
+        return "Employee: {" + "givenName: " + givenName + "; surName: " + surName +
                 "; age: " + age + "; gender: " + gender + "; role: " + role +
                 "; dept: " + dept + "; eMail: " + eMail + "; phone:" + phone +
                 "; address: " + address + "; city: " + city + "; state: " + state +
@@ -38,7 +38,7 @@ public class Employee {
         private String address;
         private String city;
         private String state;  //область
-        private int code;      //код области
+        private int code = -1;      //код области
 
         public Builder setGivenName(String givenName){
             this.givenName = givenName;
@@ -122,11 +122,11 @@ public class Employee {
         List<Employee> list = new ArrayList<>();
 
         list.add(new Builder()
-                .setGivenName("Ann")
+                .setGivenName("Anna")
                 .setSurName("Ivanova")
                 .setAge(25)
                 .setGender(Gender.FEMALE)
-                .setEMail("ann_ivanova@gmail.com")
+                .setEMail("a.ivanova@gmail.com")
                 .setDept(3)
                 .setRole(Role.MANAGER)
                 .build());
@@ -256,5 +256,7 @@ public class Employee {
         return this.givenName + " " + this.surName;
     }
 
-    public int getDept(){ return this.dept;}
+    public int getDept() { return this.dept;}
+
+    public String getCity() {return this.city;}
 }
