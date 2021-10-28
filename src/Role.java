@@ -1,8 +1,3 @@
-enum Gender {
-    MALE(),
-    FEMALE();
-}
-
 enum Role {
     STAFF(30000, 0.1),
     MANAGER(50000,0.2),

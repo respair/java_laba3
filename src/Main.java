@@ -11,51 +11,34 @@ public class Main {
         List<Employee> l = Employee.createShortList();
         Accountant acc = new Accountant();
 
-        List<Employee> emp = l.stream()
+        System.out.println("*** премии людям старше 30, работающим в 1 и 2 отделах ***");
+        l.stream()
                 .filter(l1 -> l1.getAge() > 30)
                 .filter(l1 -> l1.getDept() == 2 || l1.getDept() == 1)
-                .collect(Collectors.toList());
+                .forEach(p -> acc.payPremium(p));
 
-        System.out.println("*** премии людям старше 30, работающим в 1 и 2 отделах ***");
-        for (Employee e : emp){
-            acc.payPremium(e);
-        }
-
-        List<Employee> emp2 = l.stream()
-                .filter(l1 -> l1.getGender() == Gender.FEMALE)
-                .collect(Collectors.toList());
 
         System.out.println("*** премии женщинам ***");
-        for (Employee e : emp2){
-            acc.payPremium(e);
-        }
-
-        List<Employee> emp3 = l.stream()
-                .filter(l1 -> l1.getDept() == 3)
-                .collect(Collectors.toList());
+        l.stream()
+                .filter(l1 -> l1.getGender().equals(Gender.FEMALE))
+                .forEach(p -> acc.payPremium(p));
 
         System.out.println("*** зарплата людям из 3 отдела ***");
-        for (Employee e : emp3){
-            acc.paySalary(e);
-        }
+        l.stream()
+                .filter(l1 -> l1.getDept() == 3)
+                .forEach(p -> acc.paySalary(p));
 
-        List<Employee> emp4 = l.stream()
-                .filter(l1 -> l1.getRole() == Role.MANAGER)
-                .collect(Collectors.toList());
 
         System.out.println("*** зарплата менеджерам ***");
-        for (Employee e : emp4){
-            acc.paySalary(e);
-        }
+        l.stream()
+                .filter(l1 -> l1.getRole().equals(Role.MANAGER))
+                .forEach(p -> acc.paySalary(p));
 
-        List<Employee> emp5 = l.stream()
-                .filter(l1 -> l1.getRole() == Role.STAFF)
-                .collect(Collectors.toList());
 
         System.out.println("*** премия стаффу ***");
-        for (Employee e : emp5){
-            acc.payPremium(e);
-        }
+        l.stream()
+                .filter(l1 -> l1.getRole().equals(Role.STAFF))
+                .forEach(p -> acc.payPremium(p));
 
         // HOMEWORK
 
@@ -71,7 +54,7 @@ public class Main {
         System.out.println("\n");
         System.out.println("PREDICATE: " + "\n");
 
-        Predicate<Employee> predicate = p -> p.getAge()>30 && p.getCity() == "Domodedovo";
+        Predicate<Employee> predicate = p -> p.getAge()>30 && p.getCity().equals("Domodedovo");
         l.stream()
                 .filter(predicate)
                 .forEach(System.out::println);
