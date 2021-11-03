@@ -14,6 +14,7 @@ public class Employee {
     private String city;
     private String state;  //область
     private int code = -1;      //код области
+    private int salary = 0;
 
     private Employee() {}
 
@@ -39,6 +40,7 @@ public class Employee {
         private String city;
         private String state;  //область
         private int code = -1;      //код области
+        private int salary = 0;
 
         public Builder setGivenName(String givenName){
             this.givenName = givenName;
@@ -100,6 +102,11 @@ public class Employee {
             return this;
         }
 
+        public Builder setSalary(int salary_){
+            this.salary = salary_;
+            return this;
+        }
+
         public Employee build(){
             Employee employee = new Employee();
             employee.givenName=this.givenName;
@@ -114,6 +121,7 @@ public class Employee {
             employee.city=this.city;
             employee.state=this.state;  //область
             employee.code=this.code;      //код области
+            employee.salary=this.salary;
             return employee;
         }
     }
@@ -129,6 +137,7 @@ public class Employee {
                 .setEMail("a.ivanova@gmail.com")
                 .setDept(3)
                 .setRole(Role.MANAGER)
+                .setSalary(100000)
                 .build());
 
         list.add(new Builder()
@@ -140,6 +149,7 @@ public class Employee {
                 .setDept(2)
                 .setPhone("8-903-783-90-93")
                 .setRole(Role.MANAGER)
+                .setSalary(120000)
                 .build());
 
         list.add(new Builder()
@@ -154,6 +164,7 @@ public class Employee {
                 .setCode(0)
                 .setPhone("8-966-690-90-96")
                 .setRole(Role.MANAGER)
+                .setSalary(120000)
                 .build());
 
         list.add(new Builder()
@@ -168,6 +179,7 @@ public class Employee {
                 .setCode(1)
                 .setAddress("Svetlaya street, 3/2")
                 .setRole(Role.STAFF)
+                .setSalary(60000)
                 .build());
 
         list.add(new Builder()
@@ -182,6 +194,7 @@ public class Employee {
                 .setCode(1)
                 .setAddress("Svetlaya street, 3/2")
                 .setRole(Role.MANAGER)
+                .setSalary(130000)
                 .build());
 
         list.add(new Builder()
@@ -196,6 +209,7 @@ public class Employee {
                 .setCode(1)
                 .setAddress("Temnaya street, 2/3")
                 .setRole(Role.EXECUTIVE)
+                .setSalary(200000)
                 .build());
 
         list.add(new Builder()
@@ -209,6 +223,7 @@ public class Employee {
                 .setCity("Moscow")
                 .setCode(0)
                 .setRole(Role.STAFF)
+                .setSalary(70000)
                 .build());
 
         list.add(new Builder()
@@ -223,6 +238,7 @@ public class Employee {
                 .setAddress("Novaya street, 1")
                 .setCode(0)
                 .setRole(Role.STAFF)
+                .setSalary(50000)
                 .build());
 
         list.add(new Builder()
@@ -236,6 +252,7 @@ public class Employee {
                 .setCity("Zelenograd")
                 .setCode(2)
                 .setRole(Role.STAFF)
+                .setSalary(55000)
                 .build());
         return list;
     }
@@ -258,5 +275,13 @@ public class Employee {
 
     public int getDept() { return this.dept;}
 
+    public int getSalary() { return this.salary;}
+
     public String getCity() {return this.city;}
+
+    public String getMail() {return this.eMail;}
+
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
 }
